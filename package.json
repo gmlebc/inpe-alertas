@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/gmlebc/inpe-alertas#readme",
   "devDependencies": {
+    "eslint": "^9.34.0",
     "jest": "^30.1.3"
   }
 }
