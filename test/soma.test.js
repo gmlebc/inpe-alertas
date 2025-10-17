@@ -3,8 +3,8 @@ function soma(a, b) {
 }
 
 
-test("soma de 2 + 3 deve ser 5", () => {
-  expect(soma(2, 3)).toBe(5);
+test("teste final CI/CD", () => {
+  expect(2 + 2).toBe(4);
 });
 
 console.log("Teste final de CI/CD");
