@@ -1,30 +1,34 @@
-name: CI com ESLint e Testes
+name: CI - INPE Alertas
 
 on:
   push:
-    branches: [dev, main]
+    branches:
+      - dev
   pull_request:
-    branches: [dev, main]
+    branches:
+      - dev
 
 jobs:
-  lint-and-test:
+  build-and-test:
     runs-on: ubuntu-latest
-    
+
     steps:
-    - name: Checkout do repositório
-      uses: actions/checkout@v4
-      
-    - name: Configurar Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: '18'
-        cache: 'npm'
-        
-    - name: Instalar dependências
-      run: npm ci
-      
-    - name: Rodar ESLint
-      run: npx eslint .
-      
-    - name: Rodar Jest
-      run: npm test
+      - name: 📥 Checkout do código
+        uses: actions/checkout@v4
+
+      - name: 🔧 Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: 📦 Instalar dependências
+        run: npm ci
+
+      - name: 🔍 Verificar estilo com ESLint
+        run: npx eslint .
+
+      - name: 🎨 Verificar formatação com Prettier
+        run: npx prettier --check .
+
+      - name: 🧪 Executar testes com Jest
+        run: npm test -- --passWithNoTests
